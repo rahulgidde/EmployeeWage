@@ -11,10 +11,10 @@ randomcheck=$((RANDOM%2))
 if [ $randomcheck -eq $IS_PRESENT ]
 then
 	echo "Employee Is Present"
-   Present_hour=8
+	Present_hour=8
 else
 	echo "Employee Is Absent"
-   Present_hour=0
+	Present_hour=0
 fi
 
 #CHECKING EMPLOYEE PER DAY WAGE
