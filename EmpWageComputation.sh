@@ -3,13 +3,13 @@
 echo "------------------WELCOME------------------"
 
 #CONSTANT
-Is_present=1
+IS_PRESENT=1
 
 #STORE RANDOM VALUE
 randomcheck=$((RANDOM%2))
 
 #CHECK EMPLOYEE IS PRESENT OR ABSENT
-if [ $randomcheck -eq $Is_present ]
+if [ $randomcheck -eq $IS_PRESENT ]
 then
 	echo "Employee Is Present"
 else
