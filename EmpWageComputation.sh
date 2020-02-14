@@ -2,7 +2,7 @@
 
 #CONSTANT
 IS_PRESENT=1
-PER_DAY_WAGE=20
+PER_HOUR_WAGE=20
 
 #STORE RANDOM VALUE
 randomcheck=$((RANDOM%2))
@@ -11,12 +11,12 @@ randomcheck=$((RANDOM%2))
 if [ $randomcheck -eq $IS_PRESENT ]
 then
 	echo "Employee Is Present"
-	Present_hour=8
+	hoursPerDay=8
 else
 	echo "Employee Is Absent"
-	Present_hour=0
+	hoursPerDay=0
 fi
 
 #CHECKING EMPLOYEE PER DAY WAGE
-dailywage=$(($PER_DAY_WAGE*$Present_hour))
-echo "Employee Per Day Wage Is: $dailywage Rs."
+dailywage=$(($PER_HOUR_WAGE*$hoursPerDay))
+echo "Employee Daily Wage Is: $dailywage Rs."
