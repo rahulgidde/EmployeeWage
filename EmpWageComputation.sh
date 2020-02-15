@@ -27,7 +27,7 @@ do
 			employeeHours=$(($employeeHours+0))
 			;;
 	esac
-			((DAYS_PER_MONTH--))
+	((DAYS_PER_MONTH--))
 done
 
 #CALCULATE EMPLOYEE WAGE PER MONTH
