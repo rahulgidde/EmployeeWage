@@ -6,25 +6,28 @@ FULL_TIME_HOURS=8
 PART_TIME_HOURS=4
 IS_FULL_TIME=1
 Is_PART_TIME=2
+DAYS_PER_MONTH=20
 
-#STORE RANDOM VALUE
-randomcheck=$((RANDOM%3))
+#VARIABLE
+employeeHours=0
 
-#CALCULATING EMPLOYEE DAILY WAGE
-case $randomcheck in
-	$IS_FULL_TIME)
-		employeeHours=$FULL_TIME_HOURS
-		echo "Full Time Employee Wage Is: "
-		;;
-	$Is_PART_TIME)
-		employeeHours=$PART_TIME_HOURS
-		echo "Part Time Employee Wage Is: "
-		;;
-	*)
-		employeeHours=0
-		echo "Employee Is Not Working: "
-		;;
-esac
+#CHECK EMPLOYEE IS PRESENT OR ABSENT
+for (( index=1; index<=$DAYS_PER_MONTH; index++ ))
+do
+	randomcheck=$((RANDOM%3))
+	case $randomcheck in
+		$IS_FULL_TIME)
+			employeeHours=$(($employeeHours+$FULL_TIME_HOURS))
+			;;
+		$Is_PART_TIME)
+			employeeHours=$(($employeeHours+$PART_TIME_HOURS))
+			;;
+		*)
+			employeeHours=$(($employeeHours+0))
+			;;
+	esac
+done
 
-#DISPLAYING PART TIME OR FULL TIME EMPLOYEE WAGE
-salary=$(($PER_HOUR_WAGE*$employeeHours))
+#CALCULATING EMPLOYEE WAGE PER MONTH
+wagePerMonth=$(($PER_HOUR_WAGE*$employeeHours))
+echo "Employee Wage Per Month = $wagePerMonth"
