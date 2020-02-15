@@ -12,11 +12,11 @@ randomcheck=$((RANDOM%3))
 
 #CALCULATING EMPLOYEE DAILY WAGE
 case $randomcheck in
-	1)
+	$IS_FULL_TIME)
 		employeeHours=$FULL_TIME_HOURS
 		echo "Full Time Employee Wage Is: "
 		;;
-	2)
+	$Is_PART_TIME)
 		employeeHours=$PART_TIME_HOURS
 		echo "Part Time Employee Wage Is: "
 		;;
