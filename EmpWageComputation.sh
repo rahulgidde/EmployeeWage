@@ -43,7 +43,7 @@ function calculateWage
 #CALCULATE TOTAL EMPLOYEE WORKING HOURS AND WORKING DAYS
 while [ $DAYS_PER_MONTH -ne $totalWorkingDays -a $totalEmployeeHours -le $TOTALL_WORKING_HOURS ]
 do
-   dailyWage[totalWorkingDays]=$(calculateWage $(workingHours))
+	dailyWage[totalWorkingDays]=$(calculateWage $(workingHours))
 	totalEmployeeHours=$(($totalEmployeeHours+$(workingHours)))
 	((totalWorkingDays++))
 done
