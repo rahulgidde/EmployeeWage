@@ -11,25 +11,32 @@ TOTALL_WORKING_HOURS=100
 
 #VARIABLE
 employeeHours=0
+totalEmployeeHours=0
 
-#CHECK EMPLOYEE IS PRESENT OR ABSENT TILL CONDITION IS NOT SATISFIED
-while [ $DAYS_PER_MONTH -ne 0 -a $employeeHours -le $TOTALL_WORKING_HOURS ]
-do
+#CALCULATE EMPLOYEE WORKING HOURS
+function workingHours()
+{
 	randomcheck=$((RANDOM%3))
 	case $randomcheck in
 		$IS_FULL_TIME)
-			employeeHours=$(($employeeHours+$FULL_TIME_HOURS))
-			;;
+				employeeHours=8
+				;;
 		$Is_PART_TIME)
-			employeeHours=$(($employeeHours+$PART_TIME_HOURS))
-			;;
+				employeeHours=4
+				;;
 		*)
-			employeeHours=$(($employeeHours+0))
-			;;
+				employeeHours=0
+				;;
 	esac
-	((DAYS_PER_MONTH--))
+	echo $employeeHours
+}
+
+#CALCULATE TOTAL EMPLOYEE WORKING HOURS
+while [ $DAYS_PER_MONTH -ne 0 -a $totalEmployeeHours -le $TOTALL_WORKING_HOURS ]
+do
+  	(( DAYS_PER_MONTH-- ))
+	totalEmployeeHours=$(($totalEmployeeHours + $(workingHours)))
 done
 
-#CALCULATE EMPLOYEE WAGE PER MONTH
-wagePerMonth=$(($PER_HOUR_WAGE*$employeeHours))
-echo "Employee Wage Per Month = $wagePerMonth"
+#PRINT EMPLOYEE WAGE
+echo $(($PER_HOUR_WAGE*$totalEmployeeHours))
