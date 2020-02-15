@@ -35,7 +35,7 @@ function workingHours()
 while [ $DAYS_PER_MONTH -ne 0 -a $totalEmployeeHours -le $TOTALL_WORKING_HOURS ]
 do
   	(( DAYS_PER_MONTH-- ))
-	totalEmployeeHours=$(($totalEmployeeHours + $(workingHours)))
+	totalEmployeeHours=$(($totalEmployeeHours+$(workingHours)))
 done
 
 #PRINT EMPLOYEE WAGE
