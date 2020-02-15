@@ -11,15 +11,20 @@ Is_PART_TIME=2
 randomcheck=$((RANDOM%3))
 
 #CALCULATING EMPLOYEE DAILY WAGE
-if [ $randomcheck -eq $IS_FULL_TIME ]
-then
-	employeeHours=$FULL_TIME_HOURS
-elif [ $randomcheck -eq $Is_PART_TIME ]
-then
-	employeeHours=$PART_TIME_HOURS
-else
-	employeeHours=0
-fi
+case $randomcheck in
+	1)
+		employeeHours=$FULL_TIME_HOURS
+		echo "Full Time Employee Wage Is: "
+		;;
+	2)
+		employeeHours=$PART_TIME_HOURS
+		echo "Part Time Employee Wage Is: "
+		;;
+	*)
+		employeeHours=0
+		echo "Employee Is Not Working: "
+		;;
+esac
 
 #DISPLAYING PART TIME OR FULL TIME EMPLOYEE WAGE
 salary=$(($PER_HOUR_WAGE*$employeeHours))
