@@ -12,6 +12,7 @@ TOTALL_WORKING_HOURS=100
 #VARIABLE
 employeeHours=0
 totalEmployeeHours=0
+totalWorkingDays=0
 
 #CALCULATE EMPLOYEE WORKING HOURS
 function workingHours()
@@ -31,12 +32,22 @@ function workingHours()
 	echo $employeeHours
 }
 
-#CALCULATE TOTAL EMPLOYEE WORKING HOURS
-while [ $DAYS_PER_MONTH -ne 0 -a $totalEmployeeHours -le $TOTALL_WORKING_HOURS ]
+#CALCULATE DAILY WAGE
+function calculateWage
+{
+	employeeHours=$1
+	employeeWage=$(($employeeHours*$PER_HOUR_WAGE))
+	echo $employeeWage
+}
+
+#CALCULATE TOTAL EMPLOYEE WORKING HOURS AND WORKING DAYS
+while [ $DAYS_PER_MONTH -ne $totalWorkingDays -a $totalEmployeeHours -le $TOTALL_WORKING_HOURS ]
 do
-  	(( DAYS_PER_MONTH-- ))
+   dailyWage[totalWorkingDays]=$(calculateWage $(workingHours))
 	totalEmployeeHours=$(($totalEmployeeHours+$(workingHours)))
+	((totalWorkingDays++))
 done
 
 #PRINT EMPLOYEE WAGE
-echo $(($PER_HOUR_WAGE*$totalEmployeeHours))
+echo "Daily Wages: ${dailyWage[@]}"
+echo "Total Wage: $(($PER_HOUR_WAGE*$totalEmployeeHours))"
