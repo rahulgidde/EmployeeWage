@@ -53,6 +53,6 @@ done
 
 #PRINT EMPLOYEE WAGE
 echo "Daily Wages: ${dailyWage[@]}"
-echo "Keys: ${!dailyWage[@]}"
+echo "Days: ${!dailyWage[@]}"
 echo "Total Wage: $(($PER_HOUR_WAGE*$totalEmployeeHours))"
 
