@@ -20,8 +20,8 @@ declare -A dailyWage
 #CALCULATE EMPLOYEE WORKING HOURS
 function workingHours()
 {
-	randomcheck=$((RANDOM%3))
-	case $randomcheck in
+	randomCheck=$((RANDOM%3))
+	case $randomCheck in
 		$IS_FULL_TIME)
 				employeeHours=8
 				;;
@@ -36,7 +36,7 @@ function workingHours()
 }
 
 #CALCULATE DAILY WAGE
-function calculateWage
+function calculateWage()
 {
 	employeeHours=$1
 	employeeWage=$(($employeeHours*$PER_HOUR_WAGE))
